@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <link rel="import" href="barranavegacao-componente.js">
         <title>Atividades - LP3</title>
     </head>
     <body>
@@ -14,13 +15,19 @@
                 <div class="linhas"></div>
             </div>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Entregas</a></li>
-                <li><a href="#">Sobre</a></li>
+                <li><a id="btnHome" href="#">Home</a></li>
+                <li><a id="btnEntregas" href="#">Entregas</a></li>
+                <li><a id="btnSobre" href="#">Sobre</a></li>
             </ul>
         </nav>
-        
+
+        <div class="container">
+            <main id="principal">
+            </main>
+        </div>
+
         <!-- Scripts -->
+        <script type="module" src="cadastrofilme-component/cadastrofilme-component.js"></script>
         <script src="main.js"></script>
     </body>
 </html>

@@ -25,6 +25,18 @@ body{
     color: white;
     text-decoration: none;
 }
+.container {
+    width: 80%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-left: gray;
+    border-right: gray;
+    border-style: solid;
+}
 
 @media screen and (max-width: 768px){
      
