@@ -1,0 +1,27 @@
+{
+  "name": "entregaslp3",
+  "version": "1.0.0",
+  "description": "Atividades processuais da matéria de Linguagem de Programação III - Unialfa",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "mongoose": "^5.9.15",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Di-Go/ENTREGASLP3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Di-Go/ENTREGASLP3/issues"
+  },
+  "homepage": "https://github.com/Di-Go/ENTREGASLP3#readme"
+}
