@@ -3,9 +3,16 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const appServer = express();
 
+// Template Engine
+appServer.engine("handlebars", handlebars({defaultLayout: 'main'}));
+appServer.set('view engine','handlebars');
+
+// Carregamento Estilos
+appServer.use('/public', express.static('public'));
+
 // Rotas e Templates
-appServer.get('/', (request, response) => {
-    response.send("<h1>Servidor Executando<h1/>");
+appServer.get("/", (request, response) =>{
+    response.render('index');
 });
 
 // Start Server
