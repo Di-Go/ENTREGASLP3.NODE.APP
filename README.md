@@ -2,7 +2,7 @@
 
 Atividades processuais da matéria de Linguagem de Programação III - Unialfa
 
-**Apoio:** Professor Murilo - Linguagem de Programação 
+**Apoio:** Professor Murilo Pacheco [Link do Git :octocat:](https://github.com/murilopacheco) - Linguagem de Programação 
 
 **Materiais de Apoio:**
 - **Webdesign em Foco:** https://www.youtube.com/channel/UCL-mk7btv-dHI5hY2Tl1GHg
