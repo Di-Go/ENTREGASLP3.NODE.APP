@@ -14,6 +14,9 @@ appServer.use('/public', express.static('public'));
 appServer.get("/", (request, response) =>{
     response.render('index');
 });
+appServer.get("/categoria_filme", (request, response) =>{
+    response.render('cadastro-categoria-filme');
+});
 
 // Start Server
 appServer.listen(8081, (request, response) => {
