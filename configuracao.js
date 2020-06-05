@@ -15,11 +15,15 @@ const servidor = express();
 //#region Rotas e Templates
     // Página Inicial
         servidor.get("/", (requisicao, resposta) =>{
-            resposta.render('index');
+            resposta.render('index', {
+                tituloDaPagina: "Pagina Inicial"
+            });
         });
     // Cadastro de Categoria de Filmes
         servidor.get("/categoria_filme", (requisicao, resposta) =>{
-            resposta.render('cadastro-categoria-filme');
+            resposta.render('cadastro-categoria-filme', {
+                tituloDaPagina: "Cadastro de Categoria" 
+            });
         });
 //#endregion
 
