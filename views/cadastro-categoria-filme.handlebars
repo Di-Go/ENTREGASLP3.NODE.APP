@@ -32,23 +32,39 @@
         evento.preventDefault();
 
         const categoria = {
-            "id": document.getElementById('categoria-id').value,
-            "descricao": document.getElementById('categoria-descricao').value
+            id: document.getElementById('categoria-id').value,
+            descricao: document.getElementById('categoria-descricao').value
         };
+        
+        const url = 'http://localhost:8082/api/cadastro_categoria_filme';
         
         const opcoesEnvio = {
             method: 'POST',
-            mode: 'no-cors',
+            mode: 'cors',
             headers: {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify(categoria)
         };
-        fetch('http://localhost:8082/api/cadastro_categoria_filme', opcoesEnvio)
+
+        fetch(url, opcoesEnvio)
             .then(async (resposta) => {
-                return resposta;
+                let CodigoStatusDeErro = 400;
+                if (resposta.status >= CodigoStatusDeErro){
+                    return await resposta.json().then((respostaComErro) => {
+                        const erro = new Error("Requisição retornou com erro!");
+                        erro.data = respostaComErro;
+                        throw erro;
+                    });
+                }
+                return await resposta.json();
             })
-            .then((conteudo) => {console.log(conteudo)});
+            .then((conteudo) => {
+                console.log(conteudo);
+            })
+            .catch((erro) => {
+                console.log(erro, erro.data);
+            });
     });
 
 
