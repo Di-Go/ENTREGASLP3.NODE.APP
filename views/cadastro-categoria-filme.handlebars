@@ -24,6 +24,9 @@
         </form>
     </div>
 </div>
+<div class="card-panel" id="lista-categorias">
+    
+</div>
 
 <script>
     const formulario = document.getElementById('fomulario-cadastro');
@@ -57,7 +60,7 @@
                         throw erro;
                     });
                 }
-                return await resposta.json();
+                return await alert('Cadastrador com Sucesso!');
             })
             .then((conteudo) => {
                 console.log(conteudo);
@@ -67,5 +70,38 @@
             });
     });
 
+    const url = 'http://localhost:8082/api/listar_categoria_filme';
+    fetch(url)
+        .then(async (resposta) => {
+            let CodigoStatusDeErro = 400;
+            if (resposta.status >= CodigoStatusDeErro){
+                return await resposta.json().then((respostaComErro) => {
+                    const erro = new Error("Requisição retornou com erro!");
+                    erro.data = respostaComErro;
+                    throw erro;
+                });
+            }
+            return await resposta.json();
+        })
+        .then((conteudo) => {
+            const boxLista = document.getElementById('lista-categorias');
 
+            conteudo.categorias.forEach((categoria) => {
+                let linha = document.createElement('div');
+                linha.classList.add('row');
+                
+                let card = document.createElement('div');
+                card.classList.add('card-panel');
+
+                let descricao = document.createElement('h3');
+                descricao.innerHTML = categoria.descricao;
+
+                card.appendChild(descricao);
+                linha.appendChild(card);
+                boxLista.appendChild(linha);
+            });
+        })
+        .catch((erro) => {
+            console.log(erro, erro.data);
+        });
 </script>
