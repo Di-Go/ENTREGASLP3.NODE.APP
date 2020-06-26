@@ -20,7 +20,7 @@ APLICAÇÃO WEB destinada a interagir com o usuário e consumir serviços do Bac
     > npm install
 
 3. Para iniciar a aplicação execute o comando:<br/>
-    > npm run server
+    > npm start
 
 # Tecnologias Utilizadas
 ### Front-End
