@@ -41,7 +41,7 @@ class EntidadeCardComponent extends HTMLElement{
         botaoEditar.innerHTML = '<i class="material-icons">edit</i>';
     
         let botaoDeletar = document.createElement('button');
-        botaoDeletar.setAttribute('id', 'btnEditar');
+        botaoDeletar.setAttribute('id', 'btnDeletar');
         botaoDeletar.classList.add('btn-large');
         botaoDeletar.classList.add('waves-effect');
         botaoDeletar.classList.add('waves-light');
