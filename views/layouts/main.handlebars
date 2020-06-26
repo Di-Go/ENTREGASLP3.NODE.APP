@@ -9,10 +9,14 @@
     <link type="text/css" rel="stylesheet" href="/public/materialize/css/materialize.min.css"  media="screen,projection"/>
     <!-- #endregion -->
 
-    <title>Página Inicial</title>
+    <title>{{tituloDaPagina}}</title>
 </head>
 <body>
-    {{{body}}}
+    {{> navbar}}
+    
+    <div class="container">
+        {{{body}}}
+    </div>
 
     <!-- #region Script Estilos-->
     <script type="text/javascript" src="/public/materialize/js/materialize.min.js"></script>

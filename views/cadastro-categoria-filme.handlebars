@@ -1,0 +1,98 @@
+<div class="card-panel">
+    <div class="row">
+        <div class="col s12 center-align">
+            <h2>Cadastro de Categorias</h2>
+        </div>
+    </div>
+    <div class="row">
+        <form id="fomulario-cadastro" class="col s12" >
+            <input type="text" id="categoria-id" name="categoria-id" hidden>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="categoria-descricao" name="categoria-descricao" type="text" class="validate">
+                    <label for="categoria-descricao">Descrição</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <button class="btn waves-effect waves-light btn-large" type="submit">
+                        Cadastrar
+                        <i class="material-icons left">send</i>
+                    </button>
+                </div>  
+            </div> 
+        </form>
+    </div>
+</div>
+
+<div class="card-panel" id="lista-categorias"></div>
+
+<script type="module" src="/public/componentes/EntidadeCardComponent.js"></script>
+<script>
+    const formulario = document.getElementById('fomulario-cadastro');
+    formulario.addEventListener('submit', (evento) => {
+        evento.preventDefault();
+
+        const categoria = {
+            id: document.getElementById('categoria-id').value,
+            descricao: document.getElementById('categoria-descricao').value
+        };
+        
+        const url = 'http://localhost:8082/api/cadastro_categoria_filme';
+        
+        const opcoesEnvio = {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(categoria)
+        };
+
+        fetch(url, opcoesEnvio)
+            .then(async (resposta) => {
+                let CodigoStatusDeErro = 400;
+                if (resposta.status >= CodigoStatusDeErro){
+                    return await resposta.json().then((respostaComErro) => {
+                        const erro = new Error("Requisição retornou com erro!");
+                        erro.data = respostaComErro;
+                        throw erro;
+                    });
+                }
+                return await alert('Cadastrador com Sucesso!');
+            })
+            .then((conteudo) => {
+                console.log(conteudo);
+            })
+            .catch((erro) => {
+                console.log(erro, erro.data);
+            });
+    });
+
+    const url = 'http://localhost:8082/api/listar_categoria_filme';
+    fetch(url)
+        .then(async (resposta) => {
+            let CodigoStatusDeErro = 400;
+            if (resposta.status >= CodigoStatusDeErro){
+                return await resposta.json().then((respostaComErro) => {
+                    const erro = new Error("Requisição retornou com erro!");
+                    erro.data = respostaComErro;
+                    throw erro;
+                });
+            }
+            return await resposta.json();
+        })
+        .then((conteudo) => {
+            const boxLista = document.getElementById('lista-categorias');
+            conteudo.categorias.forEach((categoria) => {
+                let cartao = document.createElement('entidade-card-component');
+                cartao.setAttribute('id', categoria._id);
+                cartao.setAttribute('descricao', categoria.descricao);
+                boxLista.append(cartao);
+            });
+        })
+        .catch((erro) => {
+            console.log(erro, erro.data);
+        });
+        
+</script>
